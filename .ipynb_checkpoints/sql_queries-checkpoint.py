@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS songs (song_id varchar, title varchar, artist_id varc
 """)
 
 artist_table_create = ("""
-CREATE TABLE IF NOT EXISTS artists (artist_id varchar, artist_name varchar, location varchar, latitude varchar, longitude varchar)
+CREATE TABLE IF NOT EXISTS artists (artist_id varchar, name varchar, location varchar, latitude varchar, longitude varchar)
 
 """)
 
@@ -49,7 +49,7 @@ VALUES (%s, %s, %s, %s, %s)
 """)
 
 artist_table_insert = ("""
-INSERT INTO artists (artist_id, artist_name, location, latitude, longitude) \
+INSERT INTO artists (artist_id, name, location, latitude, longitude) \
 VALUES (%s, %s, %s, %s, %s)
 """)
 
@@ -60,9 +60,9 @@ VALUES (%s, %s, %s, %s, %s, %s, %s)
 
 # FIND SONGS
 song_select = ("""
-SELECT song_id, songs.artist_id \
+SELECT songs.song_id, artists.artist_id \
     FROM songs JOIN artists ON (songs.artist_id = artists.artist_id)
-        WHERE title = (%s) 
+        WHERE songs.title = %s AND artists.name = %s AND songs.duration = %s ;
 """)
 
 # QUERY LISTS
