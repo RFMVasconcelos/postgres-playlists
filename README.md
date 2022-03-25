@@ -1,6 +1,6 @@
 # Sparkify DB creation + ETL Pipeline
 
-This repository encomasses scripts to create a PostgreSQL DB for a music streaming App - Sparkify.
+This repository contains the necessary scripts to create a PostgreSQL DB for a music streaming app (Sparkify), with a performant architecture, as well as the scripts to extract data from 2 sets of files and load it to the DB.
 
 ## 0. Context
 
@@ -20,7 +20,9 @@ With the data cleanly placed into the 5 tables, the analytics team can now easil
 3. Acquire more artists
 4. Engage users daily
 
-which correspond to 4 independent tables, minimizing JOINS. The time table is used when time granularity is needed in the query.
+which correspond to 4 independent tables, while minimizing JOINS. The time table is used when time granularity is needed in the query. 
+
+Advanced queries & usecases like recommending songs to a user, based on listening history can be performed with easily with the `songplays` table.
 
 ## 1. Running
 
