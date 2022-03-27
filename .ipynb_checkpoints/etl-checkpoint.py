@@ -6,6 +6,14 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    - Opens and reads song files from the /data/song_data folder
+    
+    - Extracts & transforms song data, and loads it into the songs table 
+    
+    - Extracts & transforms artist data, and loads it into the artist table 
+    """
+    
     # open song file
     df = pd.read_json(filepath, typ='series')
 
@@ -19,6 +27,23 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    
+    """
+    - Opens and reads log files from the /data/log_data folder
+    
+    - Filters logs by NextSong event
+    
+    - Converts timestamp to datetime and extracts time measures
+    
+    - Loads time data into the time table 
+    
+    - Extracts & transforms user data, and loads it into the users table 
+    
+    - Combines data extracted from log_data with existing song and artists table
+    
+    - Loads data into songplays table
+    """
+    
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -71,6 +96,14 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    
+    """
+    - gets all '*.json' files from path directory
+    - gets total number of files
+    - iterates over files in directory and processes them using given function 'func'
+    
+    """
+    
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -90,6 +123,14 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    
+    """
+    - Connects to postgresql db using psycopg2
+    - Creates a cursor 
+    - Calls in the `process_data` function to process song data via `process_song_file` function recursively
+    - Calls in the `process_data` function to process log data via `process_log_file` function recursively
+    """
+    
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
