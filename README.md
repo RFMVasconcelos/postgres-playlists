@@ -2,9 +2,9 @@
 
 This repository contains the necessary scripts to create a PostgreSQL DB for a music streaming app (Sparkify), with a performant architecture, as well as the scripts to extract data from 2 sets of files and load it to the DB.
 
-## 0. Context
+## 0. Context & Architecture 
 
-In order to enable performant queries to be done to the database, a star-schema composed of 5 tables was used: users, songs, artists, time, songplays. 
+In order to enable performant queries to be done to the database, a star-schema composed of 5 tables was used: 1 fact table - `songplays` - and 4 dimension tables - `users`, `songs`, `artists`, `time`. 
 
 The startup has put up systems that collect 2 types of data:
 
@@ -22,9 +22,9 @@ With the data cleanly placed into the 5 tables, the analytics team can now easil
 
 which correspond to 4 independent tables, while minimizing JOINS. The time table is used when time granularity is needed in the query. 
 
-Advanced queries & usecases like recommending songs to a user, based on listening history can be performed with easily with the `songplays` table.
+Advanced queries & usecases like recommending songs to a user, based on listening history can be performed easily with the `songplays` table.
 
-## 1. Running
+## 1. Running Python Scripts
 
 In order to create the tables run:
 
