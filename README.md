@@ -6,6 +6,8 @@ This repository contains the necessary scripts to create a PostgreSQL DB for a m
 
 In order to enable performant queries to be done to the database, a star-schema composed of 5 tables was used: 1 fact table - `songplays` - and 4 dimension tables - `users`, `songs`, `artists`, `time`. 
 
+![image](https://user-images.githubusercontent.com/27001378/160474147-43485e7f-4dd3-4708-a7fc-b47d4f4ef833.png)
+
 The startup has put up systems that collect 2 types of data:
 
 - Songs 
